@@ -136,6 +136,9 @@ function capitalizeAllWords(string) {
 
 function welcomeMessage(object) {
 //
+
+// I was wondering why it was only capitalizing one name and not all of the names
+// but that does not really seem like it was part of the directions but it was out of curiosity. 
 for(var value of Object.values(object)){
   if (typeof value === "string"){
    var nana = value[0].toUpperCase() + value.slice(1)
@@ -156,26 +159,45 @@ for(var value of Object.values(object)){
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: takes an object
+// O: returns "<Name> is a <Species>"
+// C: Name and species must be capitalized? 
 // E:
 
-function profileInfo(object) {
 
+// It does not sound like we need a loop. 
+
+// create variables representing CAP of name and species
+function profileInfo(object){
+  let nameW = object.name;
+  let speciesW = object.species;
+  
+  let nameX = nameW[0].toUpperCase() + nameW.slice(1);
+  let speciesX = speciesW[0].toUpperCase() + speciesW.slice(1);
+  
+  return nameX + " is a " + speciesX;
 }
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: takes an object
+// O: IF the obj has a noises array return
+//        them as a string sep by spaces
+// C: if there are no noises, return "thre no noises"
 // E:
 
 function maybeNoises(object) {
-
+if (object.noises && object.noises.length > 0){
+  return object.noises.join(" ")
+} else {
+  return "there are no noises"
+}
 }
 
 //////////////////////////////////////////////////////////////////////
