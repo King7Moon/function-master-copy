@@ -8,8 +8,10 @@
 // E:
 
 // By "returns values--" does it mean integer values or convert everything from the obj into an array?
+// this was pretty simple. I was really over thinking it. There are built in methods that make things easier
+
 function objectValues(object) {
-    
+    return Object.values(object);
 } 
 
 
@@ -23,6 +25,7 @@ function objectValues(object) {
 // E:
 
 function keysToString(object) {
+return Object.keys(object).join(" ");
 
 }
 
@@ -30,13 +33,25 @@ function keysToString(object) {
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: takes in an object
+// O: returns (the objects??) string values 
+// C: seperate return strings with spaces
 // E:
 
 function valuesToString(object) {
-    
+    // iterate through the objects values
+  var array = [];
+    for (let banana in object){ // loop through the objects values
+        // check the type. value = each iteration of values
+    let value = object[banana]
+    if (typeof value === "string"){
+      array.push(value);
+    } // push does not work on strings. it only works on arrays
+  } return array.join(" ");
+  // if the the type of values are a string
+  
+  
+  // return the object strings seperate by space. use join method
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -44,13 +59,23 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 // I:
-// O:
+// O: returns "array" or "object", if it is
 // C:
 // E:
 
+// This works but what if i gave you a number, NaN, null, or a primitive value?
 function arrayOrObject(collection) {
-    
+    if (Array.isArray(collection)){
+        return "array";
+    } else {
+        return "object";
+    }
 }
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 5 - Capitalize Word //////////////////////////////////////
@@ -62,34 +87,70 @@ function arrayOrObject(collection) {
 // E:
 
 function capitalizeWord(string) {
-    
+    // access the strings first letter
+    // I know that it would be string[0]
+    return string[0].toUpperCase() + string.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: string of words
+// O: return a string with all words capitalized
+// C: toUpperCase method
 // E:
 
+// capitalize does not mean uppercase all 
 function capitalizeAllWords(string) {
-    
+  // take the string apart
+  let word = string.split(" ");
+
+  // loop 
+  for (let i = 0; i < word.length; i++){
+    if (word[i].length > 0){
+        word[i] = word[i][0].toUpperCase() + word[i].slice(1);
+    } 
+  } return word.join(" ");
+
+
 }
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
+// I: An object with a name property
+// O: returns 'Welcome <name>!'
 // C:
 // E:
 
-function welcomeMessage(object) {
+// option one
+// we need to convert the object into an array
+// then convert the first letter of the name
+// the name must be returned capitalized
 
+function welcomeMessage(object) {
+//
+for(var value of Object.values(object)){
+  if (typeof value === "string"){
+   var nana = value[0].toUpperCase() + value.slice(1)
+  }
+} return "Welcome " + nana + "!";
 }
+
+
+  //return 'Welcome ' + Object.values(object) + '!';
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
