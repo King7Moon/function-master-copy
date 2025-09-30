@@ -192,6 +192,8 @@ function profileInfo(object){
 // C: if there are no noises, return "thre no noises"
 // E:
 
+
+// looping was too long and unneccessary. most of my work is on codepen or jsbin
 function maybeNoises(object) {
 if (object.noises && object.noises.length > 0){
   return object.noises.join(" ")
@@ -204,40 +206,90 @@ if (object.noises && object.noises.length > 0){
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: a string of words & a random single word
+// O: returns true if word is in the string
+//            returns false otherwise
+// C: loop
 // E:
 
 function hasWord(string, word) {
+let split = string.split(" ");
 
-}
+for (let wordL of split){
+  if (wordL === word){
+    return true;
+  }
+} return false;
+} 
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
+// I: takes a name and an object
+// O: adds the name to the objects friend array and return the newly updated
+//        object. 
 // C:
 // E:
 
+// How do we take the name and add it to the friends array inside the object?
+// well object.friends = name ddid not seem to be working. not even my current code with return in front
+// the return object had to be placed beneath
 function addFriend (name, object) {
-
+ object.friends.push(name);
+ return object;
 }
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// I:
-// O:
-// C:
+// I: takes a name and an object
+// O: if the name is a friend return true, otherwise return false
+// C: This is a lil diff then the one above
+//    something extra is required
 // E:
 
 function isFriend(name, object) {
+// if this person exists inside the friends array return true
+//  if (object.friends === name){
+  // this will not work because its ana rray of friends. "Johnny" is not going to === [luna, tyler, carol]
 
+  // loop over the objects array of friends
+
+if (Array.isArray(object.friends)){
+  for (let i = 0; i < object.friends.length; i++){
+    if (object.friends[i] === name && object.friends !== undefined){
+      return true;
+    }
+  }
+} return false;
+
+  // if the current iteration matches name 
+
+
+  // return true
+
+
+  // otherwise outside the loop return false
+ 
+
+
+// else return false
 }
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
